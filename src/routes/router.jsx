@@ -5,6 +5,8 @@ import Plants from "../pages/Plants";
 import PlantDetails from "../pages/PlantDetails";
 import Login from "../pages/Login";
 import SignUp from "../pages/SignUp";
+import PrivateRoute from "./PrivateRoute";
+import MyProfile from "../pages/MyProfile";
 
 const router = createBrowserRouter([
   {
@@ -21,8 +23,20 @@ const router = createBrowserRouter([
         element: <Plants />,
       },
       {
+        path: "my-profile",
+        element: (
+          <PrivateRoute>
+            <MyProfile />
+          </PrivateRoute>
+        ),
+      },
+      {
         path: "plant-details/:id",
-        element: <PlantDetails />,
+        element: (
+          <PrivateRoute>
+            <PlantDetails />
+          </PrivateRoute>
+        ),
       },
       {
         path: "login",

@@ -4,13 +4,12 @@ import PlantCard from "./PlantCard";
 const TopRatedPlants = () => {
   const { plants, loading } = usePlants();
 
-  if (loading ) {
+  if (loading) {
     return <h1>Loading...</h1>;
   }
 
   const topPlants = plants?.sort((a, b) => b.rating - a.rating);
   const topSixPlants = topPlants?.slice(0, 8);
-  console.log(topSixPlants);
 
   return (
     <div className="w-11/12 mx-auto text-center py-12 space-y-4">

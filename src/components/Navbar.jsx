@@ -1,6 +1,25 @@
 import { NavLink } from "react-router";
 import Logo from "../assets/logo.png";
+import { use } from "react";
+import { AuthContext } from "../contexts/AuthContext";
+import { toast } from "react-toastify";
+import { PacmanLoader } from "react-spinners";
+import userPhoto from "../assets/user.png";
+
 const Navbar = () => {
+  const { user, setUser, signOutUser, loading } = use(AuthContext);
+
+  const handleSignOut = () => {
+    signOutUser()
+      .then(() => {
+        toast.success("Signout successful");
+        setUser(null);
+      })
+      .catch((error) => {
+        toast.error(error.message);
+      });
+  };
+
   const links = (
     <>
       <li>
@@ -9,9 +28,11 @@ const Navbar = () => {
       <li>
         <NavLink to="/plants">Plants</NavLink>
       </li>
-      <li>
-        <NavLink>My Profile</NavLink>
-      </li>
+      {user && (
+        <li>
+          <NavLink to="/my-profile">My Profile</NavLink>
+        </li>
+      )}
     </>
   );
 
@@ -39,7 +60,7 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex="-1"
-              className="menu menu-sm dropdown-content bg-base-200 text-base-100 rounded-box z-1 mt-3 w-52 p-2"
+              className="menu menu-sm dropdown-content bg-base-200 text-base-100 rounded-box z-9999 mt-3 w-52 p-2"
             >
               {links}
             </ul>
@@ -51,13 +72,52 @@ const Navbar = () => {
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{links}</ul>
         </div>
-        <div className="navbar-end flex gap-3">
-          <NavLink to="/login" className="btn btn-primary text-base-100">
-            Login
-          </NavLink>
-          <NavLink to="/signup" className="btn btn-primary text-base-100">
-            Sign Up
-          </NavLink>
+        <div className="navbar-end">
+          {loading ? (
+            <PacmanLoader color="#41bf01" size={15} />
+          ) : user ? (
+            <div className="dropdown dropdown-end text-center">
+              <div
+                tabIndex={0}
+                role="button"
+                className="btn btn-ghost btn-circle avatar"
+              >
+                <img
+                  src={user?.photoURL || userPhoto}
+                  className="h-[40px] w-[40px] rounded-full"
+                  alt="User Avatar"
+                />
+              </div>
+              <ul
+                tabIndex={0}
+                className="dropdown-content menu p-3 shadow bg-base-200 rounded-box w-52"
+              >
+                <li>
+                  <h2 className="text-xl font-semibold">{user?.displayName}</h2>
+                </li>
+                <li>
+                  <p className="text-white/80">{user?.email}</p>
+                </li>
+                <li>
+                  <button
+                    onClick={handleSignOut}
+                    className="btn bg-[#FFF0E1] text-[#FF8811]"
+                  >
+                    Sign Out
+                  </button>
+                </li>
+              </ul>
+            </div>
+          ) : (
+            <div className="flex gap-3">
+              <NavLink to="/login" className="btn btn-primary text-base-100">
+                Login
+              </NavLink>
+              <NavLink to="/signup" className="btn btn-primary text-base-100">
+                Sign Up
+              </NavLink>
+            </div>
+          )}
         </div>
       </div>
     </div>
