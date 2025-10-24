@@ -14,7 +14,6 @@ const PlantOfTheWeek = () => {
   return (
     <section className="py-16 bg-[#E9F5EE]">
       <div className="max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-10 items-center">
-        {/* Image */}
         <div className="relative group">
           <img
             src={featuredPlant.image}
@@ -26,7 +25,6 @@ const PlantOfTheWeek = () => {
           </div>
         </div>
 
-        {/* Content */}
         <div className="space-y-4 text-left">
           <h2 className="text-4xl font-bold text-[#2D6A4F]">
             {featuredPlant.name}

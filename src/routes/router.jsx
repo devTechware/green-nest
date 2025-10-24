@@ -7,12 +7,13 @@ import Login from "../pages/Login";
 import SignUp from "../pages/SignUp";
 import PrivateRoute from "./PrivateRoute";
 import MyProfile from "../pages/MyProfile";
+import ErrorPage from "../components/ErrorPage";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout />,
-    errorElement: <h1>Error 404</h1>,
+    errorElement: <ErrorPage />,
     children: [
       {
         index: true,

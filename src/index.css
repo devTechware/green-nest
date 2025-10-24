@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,100..900;1,100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,100..900;1,100..900&display=swap");
 @import "tailwindcss";
 @plugin "daisyui" {
   themes: light --default;
@@ -6,9 +6,9 @@
 @plugin "daisyui/theme" {
   name: "light";
   default: true;
-  --color-primary: #41bf01;
-  --color-secondary: #004008;
-  --color-base-200: #004008;
+  --color-primary: #38ad2d;
+  --color-secondary: #002f1e;
+  --color-base-200: #002f1e;
   --color-base-300: #e7e7e7;
   --color-accent: #706f6f;
 }

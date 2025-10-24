@@ -1,13 +1,15 @@
 import { useParams } from "react-router";
 import usePlants from "../hooks/usePlants";
 import { toast } from "react-toastify";
+import PlantNotFoundError from "../components/PlantNotFoundError";
 
 const PlantDetails = () => {
   const { id } = useParams();
-  const { plants, loading } = usePlants();
+  const { plants } = usePlants();
 
-  if (loading) {
-    return <h1>Loading...</h1>;
+  const isValidRoute = plants && plants?.some((plant) => plant?.plantId == id);
+  if (!isValidRoute) {
+    return <PlantNotFoundError />;
   }
 
   const plant = plants?.find((plant) => plant?.plantId == id);
@@ -27,8 +29,10 @@ const PlantDetails = () => {
         <figure className="rounded-xl border-0 shadow">
           <img className="rounded-xl p-2" src={image} alt={plantName} />
         </figure>
-        <div>
-          <h1 className="text-4xl font-semibold pb-5">{plantName}</h1>
+        <div className="py-4">
+          <h1 className="text-base-200 text-4xl font-semibold pb-5">
+            {plantName}
+          </h1>
           <p>{description}</p>
           <div className="flex gap-5 py-5 font-semibold text-center">
             <span className="bg-[#DCFCE7] text-[#15803D] text-center px-2 py-1 rounded-xl w-[120px]">
@@ -41,9 +45,11 @@ const PlantDetails = () => {
               Available Stock: {availableStock}
             </span>
           </div>
-          <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow">
+          <div className="card bg-base-100 w-full max-w-sm shrink-0 ">
             <div className="card-body">
-              <h1 className="text-3xl font-bold">Book Consultation</h1>
+              <h1 className="text-3xl font-bold text-base-200">
+                Book Consultation
+              </h1>
               <form onSubmit={handleSubmit}>
                 <fieldset className="fieldset">
                   <label className="label">Name</label>
@@ -64,7 +70,9 @@ const PlantDetails = () => {
                     required
                   />
 
-                  <button className="btn btn-neutral mt-4">Book Now</button>
+                  <button className="btn btn-primary text-base-100 mt-4">
+                    Book Now
+                  </button>
                 </fieldset>
               </form>
             </div>
