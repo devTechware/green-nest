@@ -1,4 +1,4 @@
-import { NavLink } from "react-router";
+import { NavLink, useNavigate } from "react-router";
 import Logo from "../assets/logo.png";
 import { use } from "react";
 import { AuthContext } from "../contexts/AuthContext";
@@ -7,13 +7,14 @@ import { PacmanLoader } from "react-spinners";
 import userPhoto from "../assets/user.png";
 
 const Navbar = () => {
-  const { user, setUser, signOutUser, loading } = use(AuthContext);
+  const { user, signOutUser, loading } = use(AuthContext);
+  const navigate = useNavigate();
 
   const handleSignOut = () => {
     signOutUser()
       .then(() => {
         toast.success("Signout successful");
-        setUser(null);
+        setTimeout(() => navigate("/"), 100);
       })
       .catch((error) => {
         toast.error(error.message);

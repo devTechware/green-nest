@@ -7,7 +7,7 @@ import { AuthContext } from "../contexts/AuthContext";
 import { toast } from "react-toastify";
 
 const SignUp = () => {
-  const { createUser, updateUser } = use(AuthContext);
+  const { createUser, updateUser, setLoading } = use(AuthContext);
   const [show, setShow] = useState(false);
   const navigate = useNavigate();
 
@@ -28,23 +28,22 @@ const SignUp = () => {
     }
 
     createUser(email, password)
-      .then((result) => {
+      .then(() => {
         updateUser(displayName, photoURL)
           .then(() => {
-            console.log(result.user);
             toast.success("Signup successful.");
             navigate("/");
           })
-          .catch((error) => console.log(error.message));
+          .catch((error) => toast.error(error.message));
       })
       .catch((error) => {
-        console.log(error);
         if (error.code === "auth/email-already-in-use") {
           toast.error("User already exists in the database.");
         } else {
           toast.error(error.message || "An unexpected error occurred.");
         }
       });
+    setLoading(false);
   };
 
   return (

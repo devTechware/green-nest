@@ -1,17 +1,17 @@
 import { Link, useLocation, useNavigate } from "react-router";
-import { use, useState } from "react";
+import { use, useRef, useState } from "react";
 import { FaEye } from "react-icons/fa";
 import { IoEyeOff } from "react-icons/io5";
 import GoogleLogIn from "../components/GoogleLogIn";
 import { AuthContext } from "../contexts/AuthContext";
+import { toast } from "react-toastify";
 
 const Login = () => {
   const [show, setShow] = useState(false);
-  const { signInUser } = use(AuthContext);
+  const { signInUser, forgetPassword, setLoading } = use(AuthContext);
   const { state } = useLocation();
-  console.log(state);
-  
   const navigate = useNavigate();
+  const emailRef = useRef(null);
 
   const handleLogIn = (event) => {
     event.preventDefault();
@@ -19,14 +19,26 @@ const Login = () => {
     const password = event.target.password.value;
 
     signInUser(email, password)
-      .then((result) => {
-        console.log(result.user);
+      .then(() => {
         event.target.reset();
         navigate(state || "/");
       })
       .catch((error) => {
-        console.log(error);
+        toast.error(error.message);
       });
+    setLoading(false);
+  };
+
+  const handleForgetPassword = () => {
+    const email = emailRef.current.value;
+    forgetPassword(email)
+      .then(() => {
+        toast.success("Check your email to reset password");
+      })
+      .catch((error) => {
+        toast.error(error.message);
+      });
+    setLoading(false);
   };
 
   return (
@@ -39,6 +51,7 @@ const Login = () => {
             <input
               type="email"
               name="email"
+              ref={emailRef}
               className="input"
               placeholder="Email"
             />
@@ -59,7 +72,9 @@ const Login = () => {
               </span>
             </div>
             <div>
-              <a className="link link-hover">Forgot password?</a>
+              <a onClick={handleForgetPassword} className="link link-hover">
+                Forgot password?
+              </a>
             </div>
             <button className="btn btn-primary text-base-100 mt-4">
               Login

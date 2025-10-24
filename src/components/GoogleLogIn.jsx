@@ -1,7 +1,29 @@
+import { use } from "react";
+import { AuthContext } from "../contexts/AuthContext";
+import { useLocation, useNavigate } from "react-router";
+import { toast } from "react-toastify";
+
 const GoogleLogIn = () => {
+  const {signInWithGoogle} = use(AuthContext);
+  const {state} = useLocation();
+  const navigate = useNavigate();
+    
+  const handleGoogleSignIn = () => {
+    signInWithGoogle()
+    .then(() => {
+      navigate(state || "/");
+    })
+    .catch((error) => {
+      toast.error(error.message);
+    })
+  };
+
   return (
     <>
-      <button className="btn bg-white text-black border-[#e5e5e5]">
+      <button
+        onClick={handleGoogleSignIn}
+        className="btn bg-white text-black border-[#e5e5e5]"
+      >
         <svg
           aria-label="Google logo"
           width="16"

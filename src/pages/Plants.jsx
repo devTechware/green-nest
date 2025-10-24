@@ -1,11 +1,19 @@
 import usePlants from "../hooks/usePlants";
 import PlantCard from "../components/PlantCard";
+import Loading from "../components/Loading";
+import { useEffect, useState } from "react";
 
 const Plants = () => {
   const { plants, loading } = usePlants();
+  const [showLoading, setShowLoading] = useState(true);
 
-  if (loading) {
-    return <h1>Loading...</h1>;
+  useEffect(() => {
+    const timer = setTimeout(() => setShowLoading(false), 500);
+    return () => clearTimeout(timer);
+  }, [loading]);
+
+  if (loading || showLoading) {
+    return <Loading />;
   }
 
   return (
