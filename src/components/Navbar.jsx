@@ -85,7 +85,7 @@ const Navbar = () => {
               >
                 <img
                   src={user?.photoURL || userPhoto}
-                  className="h-[40px] w-[40px] rounded-full"
+                  className="h-10 w-10 rounded-full"
                   alt="User Avatar"
                 />
               </div>

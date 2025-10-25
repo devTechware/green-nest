@@ -11,10 +11,10 @@ const PlantCard = ({ plant }) => {
         alt={plantName}
       />
 
-      <div className="p-4 flex flex-col flex-grow justify-between">
+      <div className="p-4 flex flex-col grow justify-between">
         <h4 className="font-semibold text-lg text-[#004008]">{plantName}</h4>
 
-        <p className="text-gray-600 text-sm mt-1 flex-grow">
+        <p className="text-gray-600 text-sm mt-1 grow">
           {description?.length > 60
             ? description.slice(0, 60) + "..."
             : description}
