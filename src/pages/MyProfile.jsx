@@ -4,7 +4,7 @@ import userPhoto from "../assets/user.png";
 import { toast } from "react-toastify";
 
 const MyProfile = () => {
-  const { user, updateUser } = use(AuthContext);
+  const { user, setUser, updateUser } = use(AuthContext);
   const [showUpdateForm, setShowUpdateForm] = useState(false);
 
   const handleUpdateProfile = (e) => {
@@ -14,6 +14,11 @@ const MyProfile = () => {
 
     updateUser(displayName, photoURL)
       .then(() => {
+        setUser({
+          ...user,
+          displayName,
+          photoURL,
+        });
         toast.success("User Profile Updated.");
         setShowUpdateForm(false);
       })
@@ -22,8 +27,7 @@ const MyProfile = () => {
 
   return (
     <div className="w-11/12 mx-auto my-10">
-      <div className="card lg:card-side bg-gradient-to-r from-green-50 to-emerald-100 shadow-md rounded-3xl border border-emerald-200 md:w-3/4 mx-auto overflow-hidden">
-        {/* Profile Image Section */}
+      <div className="card lg:card-side bg-linear-to-r from-green-50 to-emerald-100 shadow-md rounded-3xl border border-emerald-200 md:w-3/4 mx-auto overflow-hidden">
         <figure className="flex items-center justify-center bg-emerald-200/30 md:w-1/2 p-6">
           <img
             className="w-[200px] md:w-[250px] rounded-full border-4 border-emerald-400 shadow-md transition-transform duration-300 hover:scale-105"
@@ -32,7 +36,6 @@ const MyProfile = () => {
           />
         </figure>
 
-        {/* Profile Details / Update Form */}
         <div className="card-body md:w-1/2">
           {showUpdateForm ? (
             <form onSubmit={handleUpdateProfile} className="space-y-3">
@@ -42,6 +45,7 @@ const MyProfile = () => {
 
               <div className="form-control">
                 <label className="label font-medium">Name</label>
+                <br />
                 <input
                   type="text"
                   name="name"
@@ -96,66 +100,6 @@ const MyProfile = () => {
         </div>
       </div>
     </div>
-
-    // <div className="w-11/12 mx-auto my-10">
-    //   <div className="card lg:card-side bg-base-100 shadow-sm  justify-center md:w-1/2 mx-auto">
-    //     <figure>
-    //       <img
-    //         className="w-[200px] md:w-[300px] rounded-2xl p-10"
-    //         src={user.photoURL || userPhoto}
-    //         alt={user.displayName}
-    //       />
-    //     </figure>
-    //     {showUpdateForm ? (
-    //       <div className="card-body">
-    //         <form onSubmit={handleUpdateProfile}>
-    //           <fieldset className="fieldset">
-    //             <label className="label">Name</label>
-    //             <input
-    //               type="text"
-    //               name="name"
-    //               className="input"
-    //               placeholder="Name"
-    //             />
-
-    //             <label className="label">Photo URL</label>
-    //             <input
-    //               type="text"
-    //               name="photo"
-    //               className="input"
-    //               placeholder="Your photo URL here"
-    //             />
-
-    //             <div className="flex flex-col">
-    //               <button className="btn btn-primary text-base-100 mt-4">
-    //                 Update
-    //               </button>
-    //               <button
-    //                 onClick={() => setShowUpdateForm(false)}
-    //                 className="btn btn-primary text-base-100 mt-4"
-    //               >
-    //                 Cancel
-    //               </button>
-    //             </div>
-    //           </fieldset>
-    //         </form>
-    //       </div>
-    //     ) : (
-    //       <div className="card-body">
-    //         <h2 className="card-title">{user.displayName}</h2>
-    //         <p>{user.email}</p>
-    //         <div className="card-actions">
-    //           <button
-    //             onClick={() => setShowUpdateForm(true)}
-    //             className="btn btn-primary text-base-100"
-    //           >
-    //             Update Profile
-    //           </button>
-    //         </div>
-    //       </div>
-    //     )}
-    //   </div>
-    // </div>
   );
 };
 

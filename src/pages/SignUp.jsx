@@ -39,71 +39,107 @@ const SignUp = () => {
       .catch((error) => {
         if (error.code === "auth/email-already-in-use") {
           toast.error("User already exists in the database.");
+        } else if (error.code === "auth/missing-email") {
+          toast.error("The email field is required");
+        } else if (error.code === "auth/invalid-email") {
+          toast.error("The email address is badly formatted.");
         } else {
-          toast.error(error.message || "An unexpected error occurred.");
+          toast.error(error.code || "An unexpected error occurred.");
         }
       });
     setLoading(false);
   };
 
   return (
-    <div className="card bg-base-100 w-full mx-auto max-w-sm shrink-0 shadow-2xl my-10">
-      <div className="card-body">
-        <h1 className="text-3xl font-bold text-base-200">Please Register!</h1>
-        <form onSubmit={handleSignup}>
-          <fieldset className="fieldset">
-            <label className="label">Name</label>
-            <input
-              type="text"
-              name="name"
-              className="input"
-              placeholder="Name"
-            />
+    <div className="flex justify-center items-center min-h-screen bg-linear-to-b from-[#e8f5e9] to-[#c8e6c9] py-4">
+      <div className="card w-full max-w-sm bg-[#ffffff] shadow-xl rounded-2xl border border-[#a5d6a7]">
+        <div className="card-body">
+          <h1 className="text-3xl font-bold text-[#1b5e20] text-center mb-4">
+            Join Green Nest 🌿
+          </h1>
+          <p className="text-center text-sm text-[#2e7d32] mb-6">
+            Create your account to get started
+          </p>
 
-            <label className="label">Email</label>
-            <input
-              type="email"
-              name="email"
-              className="input"
-              placeholder="Email"
-            />
+          <form onSubmit={handleSignup}>
+            <fieldset className="fieldset space-y-4">
+              <div>
+                <label className="label text-[#2e7d32] font-semibold">
+                  Name
+                </label>
+                <input
+                  type="text"
+                  name="name"
+                  className="input input-bordered w-full rounded-xl border-[#a5d6a7] focus:border-[#66bb6a] focus:ring-[#66bb6a]"
+                  placeholder="Full Name"
+                  required
+                />
+              </div>
 
-            <label className="label">Photo URL</label>
-            <input
-              type="text"
-              name="photo"
-              className="input"
-              placeholder="Your photo URL here"
-            />
+              <div>
+                <label className="label text-[#2e7d32] font-semibold">
+                  Email
+                </label>
+                <input
+                  type="email"
+                  name="email"
+                  className="input input-bordered w-full rounded-xl border-[#a5d6a7] focus:border-[#66bb6a] focus:ring-[#66bb6a]"
+                  placeholder="example@email.com"
+                  required
+                />
+              </div>
 
-            <div className="relative">
-              <label className="label">Password</label>
-              <input
-                type={show ? "text" : "password"}
-                name="password"
-                className="input"
-                placeholder="******"
-              />
-              <span
-                onClick={() => setShow(!show)}
-                className="absolute text-sm right-[25px] top-[32px] cursor-pointer z-50"
-              >
-                {show ? <FaEye /> : <IoEyeOff />}
-              </span>
-            </div>
+              <div>
+                <label className="label text-[#2e7d32] font-semibold">
+                  Photo URL
+                </label>
+                <input
+                  type="text"
+                  name="photo"
+                  className="input input-bordered w-full rounded-xl border-[#a5d6a7] focus:border-[#66bb6a] focus:ring-[#66bb6a]"
+                  placeholder="https://your-photo-link.com"
+                />
+              </div>
 
-            <button className="btn btn-primary text-base-100 mt-4">
-              Register
-            </button>
-          </fieldset>
-        </form>
-        <GoogleLogIn />
-        <p>
-          Already have an account? Please{" "}
-          <Link className="text-blue-500 hover:text-blue-800" to="/login">
-            Login
-          </Link>{" "}
-        </p>
+              <div className="relative">
+                <label className="label text-[#2e7d32] font-semibold">
+                  Password
+                </label>
+                <input
+                  type={show ? "text" : "password"}
+                  name="password"
+                  className="input input-bordered w-full rounded-xl border-[#a5d6a7] focus:border-[#66bb6a] focus:ring-[#66bb6a]"
+                  placeholder="••••••"
+                  required
+                />
+                <span
+                  onClick={() => setShow(!show)}
+                  className="absolute right-4 top-8 text-[#2e7d32] cursor-pointer z-50"
+                >
+                  {show ? <FaEye /> : <IoEyeOff />}
+                </span>
+              </div>
+
+              <button className="btn w-full bg-[#2e7d32] hover:bg-[#1b5e20] text-white font-semibold rounded-xl mt-2 border-none">
+                Register
+              </button>
+            </fieldset>
+          </form>
+
+          <div className="divider text-[#2e7d32]">OR</div>
+
+          <GoogleLogIn />
+
+          <p className="text-center text-sm text-[#2e7d32] mt-4">
+            Already have an account?{" "}
+            <Link
+              className="font-semibold text-[#388e3c] hover:text-[#66bb6a] transition-colors"
+              to="/login"
+            >
+              Login
+            </Link>
+          </p>
+        </div>
       </div>
     </div>
   );

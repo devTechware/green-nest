@@ -7,7 +7,7 @@ import Login from "../pages/Login";
 import SignUp from "../pages/SignUp";
 import PrivateRoute from "./PrivateRoute";
 import MyProfile from "../pages/MyProfile";
-import ErrorPage from "../components/ErrorPage";
+import ErrorPage from "../pages/ErrorPage";
 
 const router = createBrowserRouter([
   {

@@ -99,6 +99,7 @@ const Navbar = () => {
                 <li>
                   <p className="text-white/80">{user?.email}</p>
                 </li>
+                <br />
                 <li>
                   <button
                     onClick={handleSignOut}
@@ -110,11 +111,18 @@ const Navbar = () => {
               </ul>
             </div>
           ) : (
-            <div className="flex gap-3">
-              <NavLink to="/login" className="btn btn-primary text-base-100">
+            <div className="flex flex-col sm:flex-row gap-2 items-center justify-center">
+              <NavLink
+                to="/login"
+                className="btn bg-[#15803D] hover:bg-[#166534] text-white text-sm sm:text-base px-4 py-2 sm:px-6 sm:py-3 rounded-3xl min-w-[100px] border-none shadow-md hover:shadow-lg transition-all duration-300"
+              >
                 Login
               </NavLink>
-              <NavLink to="/signup" className="btn btn-primary text-base-100">
+
+              <NavLink
+                to="/signup"
+                className="btn bg-linear-to-r from-[#A5D6A7] to-[#81C784] hover:from-[#81C784] hover:to-[#66BB6A] text-[#0B3D02] font-semibold text-sm sm:text-base px-4 py-2 sm:px-6 sm:py-3 rounded-3xl min-w-[100px] border-none shadow-md hover:shadow-lg transition-all duration-300"
+              >
                 Sign Up
               </NavLink>
             </div>

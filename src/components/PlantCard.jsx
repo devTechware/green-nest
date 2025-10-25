@@ -4,7 +4,7 @@ const PlantCard = ({ plant }) => {
   const { image, plantName, price, rating, plantId, description } = plant;
 
   return (
-    <div className="bg-gradient-to-b from-[#f6fff8] to-[#e9f5ec] rounded-2xl shadow-md hover:shadow-xl hover:scale-[1.02] transition-all duration-300 border border-green-100 overflow-hidden flex flex-col justify-between">
+    <div className="bg-linear-to-b from-[#f6fff8] to-[#e9f5ec] rounded-2xl shadow-md hover:shadow-xl hover:scale-[1.02] transition-all duration-300 border border-green-100 overflow-hidden flex flex-col justify-between">
       <img
         className="w-full h-[220px] object-cover rounded-t-2xl"
         src={image}
