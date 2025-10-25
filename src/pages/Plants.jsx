@@ -2,15 +2,18 @@ import usePlants from "../hooks/usePlants";
 import PlantCard from "../components/PlantCard";
 import Loading from "../components/Loading";
 import { useEffect, useState } from "react";
+import { useLocation } from "react-router";
 
 const Plants = () => {
   const { plants, loading } = usePlants();
   const [showLoading, setShowLoading] = useState(true);
+  const { pathname } = useLocation();
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     const timer = setTimeout(() => setShowLoading(false), 500);
     return () => clearTimeout(timer);
-  }, [loading]);
+  }, [pathname, loading]);
 
   if (loading || showLoading) {
     return <Loading />;

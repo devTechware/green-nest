@@ -2,7 +2,7 @@ import { Link } from "react-router";
 
 const ErrorPage = () => {
   return (
-    <div className="flex flex-col items-center justify-center h-screen bg-gradient-to-b from-green-50 to-emerald-100 text-center px-4">
+    <div className="flex flex-col items-center justify-center h-screen bg-linear-to-b from-green-50 to-emerald-100 text-center px-4">
       <div className="text-6xl mb-4 animate-bounce">🌿</div>
 
       <h1 className="text-7xl font-extrabold text-emerald-600 mb-2">404</h1>

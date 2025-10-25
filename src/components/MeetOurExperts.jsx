@@ -22,7 +22,7 @@ const experts = [
 const MeetOurExperts = () => {
   return (
     <section className="py-16 bg-base-100 text-center">
-      <div className="max-w-6xl mx-auto px-4">
+      <div className="w-11/12 mx-auto px-4">
         <h2 className="text-4xl font-bold text-[#2D6A4F] mb-10">
           Meet Our Green Experts
         </h2>

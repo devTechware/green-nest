@@ -1,11 +1,18 @@
-import { useParams } from "react-router";
+import { useLocation, useParams } from "react-router";
 import usePlants from "../hooks/usePlants";
 import { toast } from "react-toastify";
 import PlantNotFoundError from "../components/PlantNotFoundError";
+import { useEffect } from "react";
 
 const PlantDetails = () => {
   const { id } = useParams();
   const { plants } = usePlants();
+
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
 
   const isValidRoute = plants && plants?.some((plant) => plant?.plantId == id);
   if (!isValidRoute) {

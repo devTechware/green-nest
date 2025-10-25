@@ -67,7 +67,7 @@ const PlantCareSlider = () => {
             768: { slidesPerView: 2 },
             1024: { slidesPerView: 3 },
           }}
-          className="max-w-6xl"
+          className="max-w-11/12"
         >
           {tips.map((tip) => (
             <SwiperSlide key={tip.id} className="flex">

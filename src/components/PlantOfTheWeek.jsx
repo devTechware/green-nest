@@ -13,7 +13,7 @@ const PlantOfTheWeek = () => {
 
   return (
     <section className="py-16 bg-[#E9F5EE]">
-      <div className="max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-10 items-center">
+      <div className="max-w-11/12 mx-auto px-4 grid md:grid-cols-2 gap-10 items-center">
         <div className="relative group">
           <img
             src={featuredPlant.image}
