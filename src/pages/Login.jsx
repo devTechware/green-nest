@@ -38,6 +38,7 @@ const Login = () => {
     forgetPassword(email)
       .then(() => {
         toast.success("Check your email to reset password");
+        window.open("https://mail.google.com/", "_blank");
       })
       .catch((error) => {
         if (error.code === "auth/missing-email") {
