@@ -1,58 +1,196 @@
+// import { NavLink } from "react-router";
+// import Logo from "../assets/logo.png";
+// import { FaFacebook, FaInstagram, FaLinkedin } from "react-icons/fa";
+// import { PiXLogo } from "react-icons/pi";
+
+// const Footer = () => {
+//   return (
+//     <footer className="bg-base-200 mt-10 border-t border-[#2d2d2d]/30">
+//       <div className="w-11/12 mx-auto py-10 flex flex-col md:flex-row justify-between items-center gap-8 text-base-100">
+//         {/* Logo + Description */}
+//         <div className="flex flex-col items-center md:items-start gap-3">
+//           <NavLink to="/">
+//             <img src={Logo} alt="GreenNest Logo" className="w-28" />
+//           </NavLink>
+//           <p className="text-center md:text-left text-white/80 max-w-xs leading-relaxed">
+//             GreenNest — Your trusted eco-friendly plant store. Bringing nature
+//             closer to your home.
+//           </p>
+//         </div>
+
+//         {/* Footer Links */}
+//         <nav className="flex flex-col md:flex-row gap-4 text-center md:text-left">
+//           <NavLink
+//             to="/about-us"
+//             className="link link-hover hover:text-[#41bf01] transition"
+//           >
+//             About Us
+//           </NavLink>
+//           <NavLink
+//             to="/contact"
+//             className="link link-hover hover:text-[#41bf01] transition"
+//           >
+//             Contact
+//           </NavLink>
+//           <NavLink
+//             to=""
+//             className="link link-hover hover:text-[#41bf01] transition"
+//           >
+//             Privacy Policy
+//           </NavLink>
+//         </nav>
+
+//         {/* Social Icons */}
+//         <div className="flex gap-4 mt-3 text-primary">
+//           <a
+//             href="#"
+//             aria-label="Facebook"
+//             className="hover:text-secondary hover:drop-shadow-[0_0_6px_#38AD2D] transition-all duration-300 hover:scale-110"
+//           >
+//             <FaFacebook size={22} />
+//           </a>
+
+//           <a
+//             href="#"
+//             aria-label="Twitter"
+//             className="hover:text-secondary hover:drop-shadow-[0_0_6px_#38AD2D] transition-all duration-300 hover:scale-110"
+//           >
+//             <PiXLogo size={22} />
+//           </a>
+
+//           <a
+//             href="#"
+//             aria-label="Instagram"
+//             className="hover:text-secondary hover:drop-shadow-[0_0_6px_#38AD2D] transition-all duration-300 hover:scale-110"
+//           >
+//             <FaInstagram size={22} />
+//           </a>
+
+//           <a
+//             href="#"
+//             aria-label="LinkedIn"
+//             className="hover:text-secondary hover:drop-shadow-[0_0_6px_#38AD2D] transition-all duration-300 hover:scale-110"
+//           >
+//             <FaLinkedin size={22} />
+//           </a>
+//         </div>
+//       </div>
+
+//       {/* Bottom Text */}
+//       <div className="py-4 text-center border-t border-[#2d2d2d]/30 text-white/70">
+//         <p>
+//           © {new Date().getFullYear()}{" "}
+//           <span className="text-[#41bf01]">GreenNest</span>. All Rights
+//           Reserved.
+//         </p>
+//       </div>
+//     </footer>
+//   );
+// };
+
+// export default Footer;
+
+import { NavLink } from "react-router";
+import Logo from "../assets/logo.png";
+import { FaFacebook, FaInstagram, FaLinkedin } from "react-icons/fa";
+import { PiXLogo } from "react-icons/pi";
+
 const Footer = () => {
   return (
-    <div className="bg-base-200">
-      <footer className="w-11/12 mx-auto footer footer-horizontal footer-center bg-base-200 text-base-100 rounded p-10">
-      <nav className="grid grid-flow-col gap-4">
-        <a className="link link-hover">About us</a>
-        <a className="link link-hover">Contact</a>
-        <a className="link link-hover">Privacy Policy</a>
-      </nav>
-      <nav>
-        <div className="grid grid-flow-col gap-4">
-          <a>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              className="fill-current"
-            >
-              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.332 3.608 1.308.975.975 1.246 2.242 1.308 3.608.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.062 1.366-.333 2.633-1.308 3.608-.975.975-2.242 1.246-3.608 1.308-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.062-2.633-.333-3.608-1.308-.975-.975-1.246-2.242-1.308-3.608C2.175 15.647 2.163 15.267 2.163 12s.012-3.584.07-4.85c.062-1.366.333-2.633 1.308-3.608.975-.975 2.242-1.246 3.608-1.308C8.416 2.175 8.796 2.163 12 2.163zm0 1.837c-3.163 0-3.532.012-4.782.07-1.063.048-1.637.218-2.017.364-.507.197-.87.433-1.253.816-.383.383-.619.746-.816 1.253-.146.38-.316.954-.364 2.017-.058 1.25-.07 1.619-.07 4.782s.012 3.532.07 4.782c.048 1.063.218 1.637.364 2.017.197.507.433.87.816 1.253.383.383.746.619 1.253.816.38.146.954.316 2.017.364 1.25.058 1.619.07 4.782.07s3.532-.012 4.782-.07c1.063-.048 1.637-.218 2.017-.364.507-.197.87-.433 1.253-.816.383-.383.619-.746.816-1.253.146-.38.316-.954.364-2.017.058-1.25.07-1.619.07-4.782s-.012-3.532-.07-4.782c-.048-1.063-.218-1.637-.364-2.017-.197-.507-.433-.87-.816-1.253-.383-.383-.746-.619-1.253-.816-.38-.146-.954-.316-2.017-.364-1.25-.058-1.619-.07-4.782-.07zM12 5.838a6.162 6.162 0 1 0 0 12.324A6.162 6.162 0 0 0 12 5.838zm0 10.162a3.999 3.999 0 1 1 0-7.998 3.999 3.999 0 0 1 0 7.998zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"></path>
-            </svg>
-          </a>
+    <footer className="bg-base-200 mt-10 border-t border-[#2d2d2d]/30">
+      <div className="w-11/12 mx-auto py-12 grid grid-cols-1 md:grid-cols-3 gap-10 text-base-100">
+        {/* Logo + Description */}
+        <div className="flex flex-col items-center md:items-start gap-4">
+          <NavLink
+            to="/"
+            className="hover:scale-105 transition-all duration-300"
+          >
+            <img
+              src={Logo}
+              alt="GreenNest Logo"
+              className="w-32 drop-shadow-md"
+            />
+          </NavLink>
 
-          <a>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              className="fill-current"
-            >
-              <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"></path>
-            </svg>
-          </a>
-
-          <a>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              className="fill-current"
-            >
-              <path d="M12 0C5.372 0 0 5.373 0 12c0 4.991 3.657 9.128 8.438 10.474-.117-.888-.223-2.255.047-3.23.242-.831 1.56-5.287 1.56-5.287s-.398-.798-.398-1.977c0-1.852 1.074-3.236 2.409-3.236 1.137 0 1.686.853 1.686 1.875 0 1.143-.728 2.851-1.104 4.435-.314 1.33.667 2.414 1.977 2.414 2.372 0 3.971-3.047 3.971-6.647 0-2.74-1.846-4.793-5.207-4.793-3.797 0-6.168 2.835-6.168 6.006 0 1.092.42 2.266.945 2.903.104.126.119.237.088.365-.096.398-.311 1.266-.353 1.44-.056.23-.182.28-.42.17-1.57-.73-2.551-3.021-2.551-4.86 0-3.961 2.879-7.602 8.305-7.602 4.363 0 7.758 3.11 7.758 7.267 0 4.338-2.735 7.828-6.528 7.828-1.276 0-2.475-.662-2.883-1.445l-.784 2.989c-.285 1.086-1.061 2.449-1.579 3.279C9.727 23.848 10.846 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"></path>
-            </svg>
-          </a>
+          <p className="text-center md:text-left text-white/80 max-w-xs leading-relaxed">
+            GreenNest — Your trusted eco-friendly plant store. Bringing nature
+            closer to your home.
+          </p>
         </div>
-      </nav>
-      <aside>
+
+        {/* Footer Navigation */}
+        <div className="flex flex-col items-center md:items-start">
+          <h3 className="text-lg font-semibold text-primary mb-3">
+            Quick Links
+          </h3>
+          <nav className="flex flex-col gap-2 text-center md:text-left">
+            <NavLink to="/about-us" className="hover:text-primary transition">
+              About Us
+            </NavLink>
+            <NavLink to="/contact" className="hover:text-primary transition">
+              Contact
+            </NavLink>
+            <NavLink
+              to="/privacy-policy"
+              className="hover:text-primary transition"
+            >
+              Privacy Policy
+            </NavLink>
+          </nav>
+        </div>
+
+        {/* Social Icons */}
+        <div className="flex flex-col items-center md:items-start">
+          <h3 className="text-lg font-semibold text-primary mb-3">Follow Us</h3>
+          <div className="flex gap-4 mt-1 text-primary">
+            <a
+              href="https://www.facebook.com/"
+              target="_blank"
+              aria-label="Facebook"
+              className="hover:text-secondary hover:drop-shadow-[0_0_6px_#38AD2D] transition-all duration-300 hover:scale-110"
+            >
+              <FaFacebook size={22} />
+            </a>
+
+            <a
+              href="https://x.com/"
+              target="_blank"
+              aria-label="X"
+              className="hover:text-secondary hover:drop-shadow-[0_0_6px_#38AD2D] transition-all duration-300 hover:scale-110"
+            >
+              <PiXLogo size={22} />
+            </a>
+
+            <a
+              href="https://www.instagram.com/"
+              target="_blank"
+              aria-label="Instagram"
+              className="hover:text-secondary hover:drop-shadow-[0_0_6px_#38AD2D] transition-all duration-300 hover:scale-110"
+            >
+              <FaInstagram size={22} />
+            </a>
+
+            <a
+              href="http://linkedin.com/in/rabin-khandakar"
+              target="_blank"
+              aria-label="LinkedIn"
+              className="hover:text-secondary hover:drop-shadow-[0_0_6px_#38AD2D] transition-all duration-300 hover:scale-110"
+            >
+              <FaLinkedin size={22} />
+            </a>
+          </div>
+        </div>
+      </div>
+
+      {/* Bottom copyright */}
+      <div className="py-4 text-center border-t border-[#2d2d2d]/30 text-white/70">
         <p>
-          Copyright © {new Date().getFullYear()} GreenNest. All right reserved.
+          © {new Date().getFullYear()}{" "}
+          <span className="text-primary font-semibold">GreenNest</span>. All
+          Rights Reserved.
         </p>
-      </aside>
+      </div>
     </footer>
-    </div>
   );
 };
 

@@ -24,6 +24,14 @@ const router = createBrowserRouter([
         element: <Plants />,
       },
       {
+        path: "about-us",
+        element: <h1>About Us</h1>,
+      },
+      {
+        path: "contact",
+        element: <h1>Contact</h1>,
+      },
+      {
         path: "my-profile",
         element: (
           <PrivateRoute>

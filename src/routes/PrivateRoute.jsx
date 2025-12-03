@@ -5,9 +5,8 @@ import { AuthContext } from "../contexts/AuthContext";
 
 const PrivateRoute = ({ children }) => {
   const { user, loading } = use(AuthContext);
-  const { pathname } = useLocation();
-
   const [showLoading, setShowLoading] = useState(true);
+  const { pathname } = useLocation();
 
   useEffect(() => {
     const timer = setTimeout(() => setShowLoading(false), 500);
