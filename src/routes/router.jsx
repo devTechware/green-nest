@@ -8,6 +8,8 @@ import SignUp from "../pages/SignUp";
 import PrivateRoute from "./PrivateRoute";
 import MyProfile from "../pages/MyProfile";
 import ErrorPage from "../pages/ErrorPage";
+import About from "../pages/About";
+import Contact from "../pages/Contact";
 
 const router = createBrowserRouter([
   {
@@ -25,11 +27,11 @@ const router = createBrowserRouter([
       },
       {
         path: "about-us",
-        element: <h1>About Us</h1>,
+        element: <About />,
       },
       {
         path: "contact",
-        element: <h1>Contact</h1>,
+        element: <Contact />,
       },
       {
         path: "my-profile",
