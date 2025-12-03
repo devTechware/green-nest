@@ -10,6 +10,7 @@ import MyProfile from "../pages/MyProfile";
 import ErrorPage from "../pages/ErrorPage";
 import About from "../pages/About";
 import Contact from "../pages/Contact";
+import PrivacyPolicy from "../pages/PrivacyPolicy";
 
 const router = createBrowserRouter([
   {
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
       {
         path: "contact",
         element: <Contact />,
+      },
+      {
+        path: "privacy-policy",
+        element: <PrivacyPolicy />,
       },
       {
         path: "my-profile",

@@ -31,35 +31,37 @@ const slidesData = [
 
 const SwiperSlider = () => {
   return (
-    <div className="w-full h-[300px] md:h-[400px] relative">
-      <Swiper
-        modules={[Autoplay, Pagination, Navigation]}
-        spaceBetween={30}
-        slidesPerView={1}
-        loop={true}
-        autoplay={{ delay: 4000, disableOnInteraction: false }}
-        pagination={{ clickable: true }}
-        navigation
-      >
-        {slidesData.map((slide, index) => (
-          <SwiperSlide key={index}>
-            <div className="relative w-full h-[300px] md:h-[400px]">
-              <img
-                src={slide.image}
-                alt="Plant Slide"
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0"></div>
-              <div className="absolute inset-0 flex items-center justify-center">
-                <h2 className="text-white text-xl md:text-4xl font-bold text-center px-4">
-                  {slide.slogan}
-                </h2>
+    <section className="py-8 bg-[#F2F8F3]">
+      <div className="max-w-11/12 mx-auto h-[300px] md:h-[400px] relative">
+        <Swiper
+          modules={[Autoplay, Pagination, Navigation]}
+          spaceBetween={30}
+          slidesPerView={1}
+          loop={true}
+          autoplay={{ delay: 4000, disableOnInteraction: false }}
+          pagination={{ clickable: true }}
+          navigation
+        >
+          {slidesData.map((slide, index) => (
+            <SwiperSlide key={index}>
+              <div className="relative w-full h-[300px] md:h-[400px] rounded-2xl">
+                <img
+                  src={slide.image}
+                  alt="Plant Slide"
+                  className="w-full h-full object-cover rounded-2xl"
+                />
+                <div className="absolute inset-0"></div>
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <h2 className="text-white text-xl md:text-4xl font-bold text-center px-4">
+                    {slide.slogan}
+                  </h2>
+                </div>
               </div>
-            </div>
-          </SwiperSlide>
-        ))}
-      </Swiper>
-    </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </div>
+    </section>
   );
 };
 
