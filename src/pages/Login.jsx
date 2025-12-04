@@ -1,10 +1,11 @@
 import { Link, useLocation, useNavigate } from "react-router";
-import { use, useRef, useState } from "react";
+import { use, useEffect, useRef, useState } from "react";
 import { FaEye } from "react-icons/fa";
 import { IoEyeOff } from "react-icons/io5";
 import GoogleLogIn from "../components/GoogleLogIn";
 import { AuthContext } from "../contexts/AuthContext";
 import { toast } from "react-toastify";
+import Loading from "../components/Loading";
 
 const Login = () => {
   const [show, setShow] = useState(false);
@@ -12,6 +13,17 @@ const Login = () => {
   const { state } = useLocation();
   const navigate = useNavigate();
   const emailRef = useRef(null);
+
+  const [showLoading, setShowLoading] = useState(true);
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    const timer = setTimeout(() => setShowLoading(false), 500);
+    return () => clearTimeout(timer);
+  }, [pathname]);
+
+  if (showLoading) return <Loading />;
 
   const handleLogIn = (event) => {
     event.preventDefault();

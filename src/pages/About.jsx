@@ -1,6 +1,20 @@
+import { useEffect, useState } from "react";
+import { useLocation } from "react-router";
+import Loading from "../components/Loading";
 import aboutImg from "../assets/about.png"; 
 
 const About = () => {
+  const [showLoading, setShowLoading] = useState(true);
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+      window.scrollTo(0, 0);
+      const timer = setTimeout(() => setShowLoading(false), 500);
+      return () => clearTimeout(timer);
+    }, [pathname]);
+
+    if (showLoading) return <Loading />;
+    
   return (
     <section className="py-20 bg-[#F2F8F3]">
       <div className="w-11/12 mx-auto flex flex-col lg:flex-row items-center gap-12">

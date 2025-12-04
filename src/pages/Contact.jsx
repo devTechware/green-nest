@@ -1,21 +1,35 @@
+import { useEffect, useState } from "react";
+import { useLocation } from "react-router";
+import Loading from "../components/Loading";
 import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
 import contactImg from "../assets/contact.png"; // <-- Add your contact image (similar style as about.png)
 
 const Contact = () => {
+  const [showLoading, setShowLoading] = useState(true);
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    const timer = setTimeout(() => setShowLoading(false), 500);
+    return () => clearTimeout(timer);
+  }, [pathname]);
+
+  if (showLoading) return <Loading />;
+
   return (
     <section className="bg-[#F2F8F3] py-16">
       <div className="w-11/12 mx-auto flex flex-col md:flex-row items-center gap-14">
-
         {/* Left Content */}
         <div className="md:w-1/2 space-y-6">
           <h2 className="text-4xl font-bold text-[#1B4332] leading-tight">
-            🌱 Get in Touch With <span className="text-[#38AD2D]">GreenNest</span>
+            🌱 Get in Touch With{" "}
+            <span className="text-[#38AD2D]">GreenNest</span>
           </h2>
 
           <p className="text-gray-600 text-lg leading-relaxed">
-            We’d love to hear from you! Whether you have questions about plant care,
-            need help choosing the right plant, or want to know more about our store,
-            our team is always here to assist you.
+            We’d love to hear from you! Whether you have questions about plant
+            care, need help choosing the right plant, or want to know more about
+            our store, our team is always here to assist you.
           </p>
 
           {/* Contact Details */}

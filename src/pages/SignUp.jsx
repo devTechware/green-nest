@@ -1,15 +1,27 @@
-import { use, useState } from "react";
-import { Link, useNavigate } from "react-router";
+import { use, useEffect, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router";
 import { FaEye } from "react-icons/fa";
 import { IoEyeOff } from "react-icons/io5";
 import GoogleLogIn from "../components/GoogleLogIn";
 import { AuthContext } from "../contexts/AuthContext";
 import { toast } from "react-toastify";
+import Loading from "../components/Loading";
 
 const SignUp = () => {
   const { createUser, updateUser, setLoading } = use(AuthContext);
   const [show, setShow] = useState(false);
   const navigate = useNavigate();
+
+  const [showLoading, setShowLoading] = useState(true);
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    const timer = setTimeout(() => setShowLoading(false), 500);
+    return () => clearTimeout(timer);
+  }, [pathname]);
+
+  if (showLoading) return <Loading />;
 
   const handleSignup = (e) => {
     e.preventDefault();
